@@ -71,7 +71,7 @@ docker run -d -p 5000:5000 --name incidents gestion-incidents   # lancer un cont
 docker ps                                                 # vérifier le conteneur
 ```
 
-Ouvrir http://localhost:5000 puis arrêter avec `docker stop incidents && docker rm incidents`.
+Ouvrir http://localhost:5000 puis arrêter avec `docker rm -f incidents`.
 
 ## Docker Compose
 
@@ -109,6 +109,8 @@ docker images
 ```
 
 ## Déploiement
+
+Les deux fichiers compose utilisent le port 5000 : arrêter l'un avant de lancer l'autre.
 
 Le fichier `compose.deploy.yaml` utilise directement l'image de GHCR, il ne reconstruit rien.
 
