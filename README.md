@@ -143,7 +143,6 @@ Les captures sont dans le dossier `captures/` :
 - `05-application-deployee.jpg` : application lancée avec `compose.deploy.yaml`
 - `06-mise-a-jour.jpg` : nouvelle version après `docker compose pull` et `up -d` (nombre d'incidents affiché)
 
-## Auteurs
+## Auteur
 
-- Étudiant 1
-- Étudiant 2
+- Adam Gattousi
