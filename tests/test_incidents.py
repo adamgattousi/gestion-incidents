@@ -28,3 +28,31 @@ def test_liste_des_incidents(client):
 def test_ajout_incident_incomplet(client):
     response = client.post("/incidents/nouveau", data={"titre": "", "lieu": ""})
     assert response.status_code == 400
+
+
+def test_details_incident(client):
+    ajouter(client)
+    response = client.get("/incidents/1")
+    assert response.status_code == 200
+    assert "Salle B12" in response.get_data(as_text=True)
+
+
+def test_incident_inexistant(client):
+    response = client.get("/incidents/999")
+    assert response.status_code == 404
+
+
+def test_modifier_statut(client):
+    ajouter(client)
+    client.post("/incidents/1/statut", data={"statut": "Résolu"})
+
+    page = client.get("/incidents/1").get_data(as_text=True)
+    assert "Résolu" in page
+
+
+def test_supprimer_incident(client):
+    ajouter(client)
+    client.post("/incidents/1/supprimer")
+
+    response = client.get("/incidents/1")
+    assert response.status_code == 404
