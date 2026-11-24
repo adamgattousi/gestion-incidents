@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Liste des incidents</h2>
+
+{% if incidents %}
+<table>
+    <tr>
+        <th>N°</th>
+        <th>Titre</th>
+        <th>Lieu</th>
+        <th>Priorité</th>
+        <th>Statut</th>
+    </tr>
+    {% for incident in incidents %}
+    <tr>
+        <td>{{ incident.id }}</td>
+        <td>{{ incident.titre }}</td>
+        <td>{{ incident.lieu }}</td>
+        <td>{{ incident.priorite }}</td>
+        <td>{{ incident.statut }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Aucun incident pour le moment.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Signaler un incident</h2>
+
+{% if erreur %}
+<p class="erreur">{{ erreur }}</p>
+{% endif %}
+
+<form method="post">
+    <label>Titre</label>
+    <input type="text" name="titre" required>
+
+    <label>Description</label>
+    <textarea name="description" rows="4" required></textarea>
+
+    <label>Lieu (salle ou laboratoire)</label>
+    <input type="text" name="lieu" required>
+
+    <label>Priorité</label>
+    <select name="priorite">
+        {% for p in priorites %}
+        <option value="{{ p }}">{{ p }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit" class="btn">Ajouter</button>
+</form>
+{% endblock %}
