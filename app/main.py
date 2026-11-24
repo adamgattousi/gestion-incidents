@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, abort, redirect, render_template, request, url_for
 
 from app import database
 
@@ -36,6 +36,26 @@ def create_app(db_path=None):
             return redirect(url_for("index"))
 
         return render_template("nouveau.html", priorites=PRIORITES)
+
+    @app.route("/incidents/<int:incident_id>")
+    def details(incident_id):
+        incident = database.get_incident(db, incident_id)
+        if incident is None:
+            abort(404)
+        return render_template("details.html", incident=incident, statuts=STATUTS)
+
+    @app.route("/incidents/<int:incident_id>/statut", methods=["POST"])
+    def changer_statut(incident_id):
+        statut = request.form.get("statut")
+        if statut not in STATUTS:
+            abort(400)
+        database.update_statut(db, incident_id, statut)
+        return redirect(url_for("details", incident_id=incident_id))
+
+    @app.route("/incidents/<int:incident_id>/supprimer", methods=["POST"])
+    def supprimer(incident_id):
+        database.delete_incident(db, incident_id)
+        return redirect(url_for("index"))
 
     return app
 

@@ -14,7 +14,7 @@
     {% for incident in incidents %}
     <tr>
         <td>{{ incident.id }}</td>
-        <td>{{ incident.titre }}</td>
+        <td><a href="{{ url_for('details', incident_id=incident.id) }}">{{ incident.titre }}</a></td>
         <td>{{ incident.lieu }}</td>
         <td>{{ incident.priorite }}</td>
         <td>{{ incident.statut }}</td>

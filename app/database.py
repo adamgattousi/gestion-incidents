@@ -35,6 +35,27 @@ def get_all_incidents(db_path):
     return incidents
 
 
+def get_incident(db_path, incident_id):
+    conn = get_connection(db_path)
+    incident = conn.execute("SELECT * FROM incidents WHERE id = ?", (incident_id,)).fetchone()
+    conn.close()
+    return incident
+
+
+def update_statut(db_path, incident_id, statut):
+    conn = get_connection(db_path)
+    conn.execute("UPDATE incidents SET statut = ? WHERE id = ?", (statut, incident_id))
+    conn.commit()
+    conn.close()
+
+
+def delete_incident(db_path, incident_id):
+    conn = get_connection(db_path)
+    conn.execute("DELETE FROM incidents WHERE id = ?", (incident_id,))
+    conn.commit()
+    conn.close()
+
+
 def add_incident(db_path, titre, description, lieu, priorite):
     conn = get_connection(db_path)
     conn.execute(
