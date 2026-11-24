@@ -83,3 +83,10 @@ header .btn {
 .erreur {
     color: #c0392b;
 }
+
+footer {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
