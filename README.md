@@ -104,13 +104,13 @@ Le fichier `.github/workflows/cd.yml` se lance à chaque push sur `main` :
 L'image est visible dans l'onglet **Packages** du profil GitHub.
 
 ```bash
-docker pull ghcr.io/nom-utilisateur/gestion-incidents:latest
+docker pull ghcr.io/adamgattousi/gestion-incidents:latest
 docker images
 ```
 
 ## Déploiement
 
-Dans `compose.deploy.yaml`, remplacer `nom-utilisateur` par votre nom GitHub **en minuscules**. Ce fichier utilise directement l'image de GHCR, il ne reconstruit rien.
+Le fichier `compose.deploy.yaml` utilise directement l'image de GHCR, il ne reconstruit rien.
 
 ```bash
 docker compose -f compose.deploy.yaml pull     # récupérer l'image
