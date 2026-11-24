@@ -1,0 +1,13 @@
+services:
+  web:
+    # remplacer nom-utilisateur par votre nom GitHub (en minuscules)
+    image: ghcr.io/nom-utilisateur/gestion-incidents:latest
+    container_name: gestion-incidents
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    volumes:
+      - incidents-data:/app/data
+
+volumes:
+  incidents-data:
