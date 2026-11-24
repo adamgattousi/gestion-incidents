@@ -136,10 +136,11 @@ docker compose -f compose.deploy.yaml up -d
 
 Les captures sont dans le dossier `captures/` :
 
-- pipeline CI réussi
-- pipeline en échec puis corrigé
-- image publiée dans GHCR
-- application déployée
+- `01-pipeline-cd-reussi.jpg` : workflow CD réussi (tests puis publication)
+- `02-ci-echec.jpg` : test volontairement cassé, échec à l'étape « Exécuter les tests »
+- `03-ci-corrige.jpg` : historique des workflows, rouge puis vert après la correction
+- `04-image-ghcr.jpg` : image publiée dans GHCR avec les tags `latest` et SHA
+- `05-application-deployee.jpg` : application lancée avec `compose.deploy.yaml`
 
 ## Auteurs
 
