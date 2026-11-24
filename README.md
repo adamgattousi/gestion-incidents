@@ -143,7 +143,7 @@ Les captures sont dans le dossier `captures/` :
 - `03-ci-corrige.jpg` : historique des workflows, rouge puis vert après la correction
 - `04-image-ghcr.jpg` : image publiée dans GHCR avec les tags `latest` et SHA
 - `05-application-deployee.jpg` : application lancée avec `compose.deploy.yaml`
-- `06-mise-a-jour.jpg` : nouvelle version après `docker compose pull` et `up -d` (nombre d'incidents affiché)
+- `06-mise-a-jour.jpg` : nouvelle version après `docker compose pull` et `up -d` (pied de page ajouté)
 
 ## Auteur
 
