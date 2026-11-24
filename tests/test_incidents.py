@@ -56,3 +56,11 @@ def test_supprimer_incident(client):
 
     response = client.get("/incidents/1")
     assert response.status_code == 404
+
+
+def test_nombre_incidents_affiche(client):
+    ajouter(client, "Incident 1")
+    ajouter(client, "Incident 2")
+
+    page = client.get("/").get_data(as_text=True)
+    assert "Liste des incidents (2)" in page
